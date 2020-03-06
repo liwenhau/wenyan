@@ -104,7 +104,7 @@ OjAw5f5CkwAAAABJRU5ErkJggg=="
       </div>
     </div>
 
-    <div id="images" style="height:928px;">
+    <div id="images">
       <div id="catch" style="transition: none 0s ease 0s; opacity: 1; top: 1px;">
         <!--<img src="https://www.sanga-ryokan.com/images/catch.png" alt="黒川のはずれ。針葉樹林の森の中、ひっそりと佇む宿。" />-->
         <div id="wenyanoto" class="wenyan-fullpage animated bounce">
@@ -113,7 +113,7 @@ OjAw5f5CkwAAAABJRU5ErkJggg=="
           <div class="bracket right">』</div>
           <div class="author" id="wenyan_author">—— 「一禅小和尚」</div>
         </div>
-		<slide/>
+        <slide />
       </div>
     </div>
     <div id="indK" class="indicator" style="width: 951px; height: 30px;">
@@ -131,9 +131,30 @@ export default {
       wenyantext: "虽然想做一团火，却成了一块透视苦难的冰"
     };
   },
-  methods: {},
+  methods: {
+    autodivheight() {
+      var winHeight = 0;
+      if (window.innerHeight) winHeight = window.innerHeight;
+      else if (document.body && document.body.clientHeight)
+        winHeight = document.body.clientHeight;
+      //通过深入Document内部对body进行检测，获取浏览器窗口高度
+      if (document.documentElement && document.documentElement.clientHeight)
+        winHeight = document.documentElement.clientHeight;
+      document.getElementById("images").style.height = winHeight + "px";
+    }
+  },
   components: {
     slide
+  },
+  mounted() {
+    this.autodivheight();
+    let _this = this;
+    window.onresize = () => {
+      _this.autodivheight();
+    };
+  },
+  destroyed() {
+    window.onresize = null;
   }
 };
 </script>

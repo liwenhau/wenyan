@@ -143,8 +143,8 @@ body {
     width: 50%;
     min-width: 490px;
     margin: 0;
-    height: auto;
     overflow: hidden;
+    height: auto;
     position: fixed;
     top: 0;
     left: 50%;
@@ -153,6 +153,10 @@ body {
     -webkit-transition: left 0.75s cubic-bezier(0.8, 0.0, 0.2, 1.0);
     -moz-transition: left 0.75s cubic-bezier(0.8, 0.0, 0.2, 1.0);
     transition: left 0.75s cubic-bezier(0.8, 0.0, 0.2, 1.0);
+}
+
+#images ul {
+    position: relative;
 }
 
 #images #catch {
@@ -184,7 +188,7 @@ body {
 }
 
 #wenyanoto {
-    position: absolute;
+    position: fixed;
     color: #fff;
     z-index: 10;
     top: 5%;
