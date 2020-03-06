@@ -1,4 +1,211 @@
-#header-wrapper{
+@charset "utf-8";
+html,
+body,
+#contents-wrapper,
+#wrapper {
+    height: 100%;
+}
+
+#wrapper {
+    min-width: 980px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 62.5%;
+    text-align: center;
+    color: #555;
+    color: rgba(0, 0, 0, 0.75);
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+#header-wrapper {
     opacity: 0;
     top: -100px;
-    }
+}
+
+#contents-wrapper {
+    float: left;
+    background-color: #ffff;
+    width: 50%;
+}
+
+#contents {
+    width: 450px;
+    margin: 0 auto;
+    padding-top: 240px;
+    text-align: left;
+    text-justify: distribute;
+    font-size: 1.2em;
+    line-height: 2.0em;
+    position: relative;
+    zoom: 1;
+    display: table-cell;
+    vertical-align: middle;
+    height: calc(100vh - 10px);
+    padding-top: 0px;
+}
+
+#contents ul {
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+#contents #pagetitle img {
+    width: 100px;
+}
+
+#contents #main {
+    text-align: center;
+}
+
+#contents li img {
+    width: 20px;
+}
+
+#pjax-container {
+    display: table;
+    width: 100%;
+    -webkit-transition: opacity 0.5s ease;
+    -moz-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
+}
+
+#navigation {
+    display: inline-block
+}
+
+#navigation a {
+    text-decoration: none;
+}
+
+#navigation>li,
+#navigation>li a {
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+#navigation>li>a {
+    display: block;
+    height: 90px;
+    padding: 10px 10px 5px;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+    opacity: 0.7;
+}
+
+#navigation>li>a:hover {
+    opacity: 1;
+}
+
+#navigation>li {
+    float: left;
+    border-top: 1px solid #fff;
+}
+
+#navigation>li:hover {
+    opacity: 1;
+    border-top: 1px solid #555;
+}
+
+#contents #sub-nav {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    line-height: 1.4em;
+}
+
+#contents li {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top;
+}
+
+#contents #sub-nav a {
+    text-decoration: none;
+    color: #555;
+}
+
+#contents #sub-nav a:hover {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+#images {
+    width: 50%;
+    min-width: 490px;
+    margin: 0;
+    height: auto;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    background: #000;
+    -webkit-transition: left 0.75s cubic-bezier(0.8, 0.0, 0.2, 1.0);
+    -moz-transition: left 0.75s cubic-bezier(0.8, 0.0, 0.2, 1.0);
+    transition: left 0.75s cubic-bezier(0.8, 0.0, 0.2, 1.0);
+}
+
+#images #catch {
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 265px;
+    left: 0;
+    text-align: center;
+    z-index: 9000;
+    opacity: 1;
+    -webkit-transition: opacity 2s ease;
+    -moz-transition: opacity 2s ease;
+    transition: opacity 2s ease;
+}
+
+#images ul li {
+    width: 100%;
+}
+
+#images ul img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.75;
+    -webkit-transition: opacity 0.5s ease;
+    -moz-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
+}
+
+#wenyanoto {
+    position: absolute;
+    color: #fff;
+    z-index: 10;
+    top: 5%;
+}
+
+#wenyanoto .word {
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 50px;
+    word-break: normal;
+    margin: 0;
+    padding: 15px 50px;
+}
+
+.lengthways {
+    margin: 0 auto;
+    height: 140px;
+    writing-mode: vertical-lr;
+    /*从左向右 从右向左是 writing-mode: vertical-rl;*/
+    writing-mode: tb-lr;
+    /*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/
+    word-wrap: break-word;
+    /*英文的时候需要加上这句，自动换行*/
+}
