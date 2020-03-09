@@ -105,14 +105,18 @@ OjAw5f5CkwAAAABJRU5ErkJggg=="
     </div>
 
     <div id="images">
-      <div id="catch" style="transition: none 0s ease 0s; opacity: 1; top: 1px;">
+      <div id="catch" >
         <!--<img src="https://www.sanga-ryokan.com/images/catch.png" alt="黒川のはずれ。針葉樹林の森の中、ひっそりと佇む宿。" />-->
-        <div id="wenyanoto" class="wenyan-fullpage animated bounce">
+         <transition enter-active-class="animated tada"  >
+        <div id="wenyanoto" v-show="wenyanisshow" >
           <div class="bracket left">『</div>
-          <div class="word lengthways" id="wenyan_text">{{wenyantext}}</div>
+            
+          <div class="word  lengthways " id="wenyan_text" >{{wenyantext}}</div>
+           
           <div class="bracket right">』</div>
           <div class="author" id="wenyan_author">—— 「一禅小和尚」</div>
         </div>
+          </transition>
         <slide />
       </div>
     </div>
@@ -128,9 +132,15 @@ import slide from ".//slideshow ";
 export default {
   data() {
     return {
-      wenyantext: "虽然想做一团火，却成了一块透视苦难的冰"
+      wenyantext: "那东西既然被你知道了，我就没脸活下去了，只有一死了之了！可是我还不想死，所以只好把你杀了啊！",
+      wenyanisshow:true
     };
   },
+    created(){
+                setInterval(() => {
+                   this.wenyanisshow=!this.wenyanisshow;
+                },5000)
+            },
   methods: {
     autodivheight() {
       var winHeight = 0;
@@ -163,4 +173,5 @@ export default {
 @import "../assets/css/default.css";
 @import "../assets/css/init.css";
 @import "../assets/css/html5reset-1.6.1.css";
+@import "../assets/font/font.css";
 </style>

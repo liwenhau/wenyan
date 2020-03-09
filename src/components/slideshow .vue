@@ -1,33 +1,29 @@
 <template>
-  <ul ref="ul">
-    <li class="animated bounce" v-for="(item,index) in sildelist" :key="index">
-      <img :src="item.imgPath" alt />
+  <ul ref="ul" >
+    <li  v-for="(item,index) in sildelist" :key="index">
+      <img :src="item.imgPath" alt  ref="img"/>
     </li>
   </ul>
 </template>
 <script>
 export default {
   mounted() {
-    this.imgHeight =
-      document.documentElement.clientHeight || document.body.clientHeight;
     window.addEventListener("mousewheel", this.handleScroll, false);
     window.addEventListener("DOMMouseScroll", this.handleScroll, false);
   },
   data() {
     return {
       sildelist: [
-        {
-          imgPath: require("../assets/images/sideimages/1.jpg")
+          {
+          imgPath: require("../assets/images/sideimages/8.jpg")
         },
-        {
-          imgPath: require("../assets/images/sideimages/2.jpg")
+         {
+          imgPath: require("../assets/images/sideimages/5.png")
         },
-        {
-          imgPath: require("../assets/images/sideimages/3.jpg")
-        },
-        {
-          imgPath: require("../assets/images/sideimages/4.jpg")
+          {
+          imgPath: require("../assets/images/sideimages/6.png")
         }
+        
       ],
       imgHeight: 0,
       childnumber:0,
@@ -49,12 +45,10 @@ export default {
       }
  
       if (direction == "up") {
-        this.imgHeight = this.imgHeight + -50;
+        this.imgHeight = this.imgHeight + 80;
       } else {
-        this.imgHeight = this.imgHeight + 50;
+        this.imgHeight = this.imgHeight + -80;
       }
-      console.log(direction);
-      console.log(this.imgHeight);
       this.$refs.ul.style.top = this.imgHeight + "px";
     }
   }
