@@ -191,7 +191,7 @@ body {
     color: #fff;
     z-index: 10;
     top: 20%;
-    right:100px;
+    right: 100px;
 }
 
 #wenyanoto .word {
@@ -202,7 +202,6 @@ body {
     word-break: normal;
     margin: 0 auto;
     padding: 15px 50px;
- 
 }
 
 .lengthways {
@@ -214,4 +213,11 @@ body {
     /*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/
     word-wrap: break-word;
     /*英文的时候需要加上这句，自动换行*/
+}
+
+.author {
+    text-align: right;
+    padding-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
 }

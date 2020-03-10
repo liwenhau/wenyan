@@ -1,55 +1,53 @@
 <template>
   <ul ref="ul" >
-    <li  v-for="(item,index) in sildelist" :key="index">
-      <img :src="item.imgPath" alt  ref="img"/>
+    <li :class="{'animated fadeInUp':isanimation}">
+      <img :src="sildelist[index].imgPath" alt  ref="img" />
     </li>
   </ul>
 </template>
 <script>
 export default {
   mounted() {
-    window.addEventListener("mousewheel", this.handleScroll, false);
-    window.addEventListener("DOMMouseScroll", this.handleScroll, false);
+    //window.addEventListener("mousewheel", this.handleScroll, false);
+    //window.addEventListener("DOMMouseScroll", this.handleScroll, false);
+       
   },
   data() {
     return {
       sildelist: [
           {
-          imgPath: require("../assets/images/sideimages/8.jpg")
+          imgPath: require("../assets/images/sideimages/1.jpg")
         },
          {
-          imgPath: require("../assets/images/sideimages/5.png")
+          imgPath: require("../assets/images/sideimages/2.jpg")
         },
           {
-          imgPath: require("../assets/images/sideimages/6.png")
+          imgPath: require("../assets/images/sideimages/3.jpg")
+        },
+         {
+          imgPath: require("../assets/images/sideimages/4.jpg")
         }
         
       ],
-      imgHeight: 0,
-      childnumber:0,
-      oldimgHeight:0
+     index:0,
+     isanimation:false
     };
   },
-  methods: {
-    handleScroll(e) {
-      var direction = e.deltaY > 0 ? "down" : "up"; //该语句可以用来判断滚轮是向上滑动还是向下
-      this.childnumber=this.$refs.ul.childNodes.length;
-      this.oldimgHeight= this.$refs.ul.childNodes[0].offsetHeight;
+  created(){
+               setInterval(this.handleScroll,5000);
 
-      if (this.imgHeight > 0) {
-        this.imgHeight = (this.childnumber-1)*-this.oldimgHeight;
-      }
-      
-      if (this.imgHeight < (this.childnumber-1)*-this.oldimgHeight) {
-        this.imgHeight =0 ;
-      }
- 
-      if (direction == "up") {
-        this.imgHeight = this.imgHeight + 80;
-      } else {
-        this.imgHeight = this.imgHeight + -80;
-      }
-      this.$refs.ul.style.top = this.imgHeight + "px";
+            },
+  methods: {
+    handleScroll() {
+      //var direction = e.deltaY > 0 ? "down" : "up"; //该语句可以用来判断滚轮是向上滑动还是向下
+        this.isanimation=true;
+        if(this.index==this.sildelist.length-1){
+           this.index=0;
+        }else{
+          this.index++;
+        }
+         this.isanimation=false;
+       
     }
   }
 };

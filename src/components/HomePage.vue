@@ -107,22 +107,17 @@ OjAw5f5CkwAAAABJRU5ErkJggg=="
     <div id="images">
       <div id="catch" >
         <!--<img src="https://www.sanga-ryokan.com/images/catch.png" alt="黒川のはずれ。針葉樹林の森の中、ひっそりと佇む宿。" />-->
-         <transition enter-active-class="animated tada"  >
-        <div id="wenyanoto" v-show="wenyanisshow" >
-          <div class="bracket left">『</div>
-            
-          <div class="word  lengthways " id="wenyan_text" >{{wenyantext}}</div>
-           
-          <div class="bracket right">』</div>
-          <div class="author" id="wenyan_author">—— 「一禅小和尚」</div>
+    
+        <div id="wenyanoto">
+          <div class="word  lengthways " id="wenyan_text" >{{wenyanContent.wenyanoto}}</div>
+          <div class="author" id="wenyan_author">——{{wenyanContent.creator}} 「{{wenyanContent.from}}」</div>
         </div>
-          </transition>
         <slide />
       </div>
     </div>
     <div id="indK" class="indicator" style="width: 951px; height: 30px;">
       <span
-        style="background: url(&quot;https://www.sanga-ryokan.com/common/images/indicator_k.png&quot;) left top no-repeat;"
+        style="background: url(https://www.sanga-ryokan.com/common/images/indicator_k.png) left top no-repeat;"
       ></span>
     </div>
   </div>
@@ -132,16 +127,11 @@ import slide from ".//slideshow ";
 export default {
   data() {
     return {
-      wenyantext: "那东西既然被你知道了，我就没脸活下去了，只有一死了之了！可是我还不想死，所以只好把你杀了啊！",
-      wenyanisshow:true
+          wenyanContent:{}
     };
   },
-    created(){
-                setInterval(() => {
-                   this.wenyanisshow=!this.wenyanisshow;
-                },5000)
-            },
   methods: {
+
     autodivheight() {
       var winHeight = 0;
       if (window.innerHeight) winHeight = window.innerHeight;
@@ -151,12 +141,23 @@ export default {
       if (document.documentElement && document.documentElement.clientHeight)
         winHeight = document.documentElement.clientHeight;
       document.getElementById("images").style.height = winHeight + "px";
+    },
+    GetWenyanOto(){
+        var _that=this;
+        this.$http.get('/api/getwenyanoto').then(res => { // url即在mock.js中定义的
+            console.log(res.data) // 打印一下响应数据
+            _that.wenyanContent=res.data.wenyanobj;
+         
+        })
     }
   },
   components: {
     slide
   },
   mounted() {
+    this.GetWenyanOto();
+     setInterval(this.GetWenyanOto,10000);
+    
     this.autodivheight();
     let _this = this;
     window.onresize = () => {
