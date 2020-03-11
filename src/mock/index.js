@@ -48,8 +48,4 @@ Mock.mock("/api/getwenyanoto", "get", {
 // 启动mock
 //Mock.mock("/api/getAddress", "get", template);
 // Mock.mock("/api/getPerson", "get", templatePerson);
-
-
-
-
 export default Mock;

@@ -105,12 +105,15 @@ OjAw5f5CkwAAAABJRU5ErkJggg=="
     </div>
 
     <div id="images">
-      <div id="catch" >
+      <div id="catch">
         <!--<img src="https://www.sanga-ryokan.com/images/catch.png" alt="黒川のはずれ。針葉樹林の森の中、ひっそりと佇む宿。" />-->
-    
+
         <div id="wenyanoto">
-          <div class="word  lengthways " id="wenyan_text" >{{wenyanContent.wenyanoto}}</div>
-          <div class="author" id="wenyan_author">——{{wenyanContent.creator}} 「{{wenyanContent.from}}」</div>
+          <div class="word lengthways" id="wenyan_text">{{wenyanContent.wenyanoto}}</div>
+          <div
+            class="author"
+            id="wenyan_author"
+          >——{{wenyanContent.creator}} 「{{wenyanContent.from}}」</div>
         </div>
         <slide />
       </div>
@@ -127,11 +130,10 @@ import slide from ".//slideshow ";
 export default {
   data() {
     return {
-          wenyanContent:{}
+      wenyanContent: {}
     };
   },
   methods: {
-
     autodivheight() {
       var winHeight = 0;
       if (window.innerHeight) winHeight = window.innerHeight;
@@ -140,15 +142,15 @@ export default {
       //通过深入Document内部对body进行检测，获取浏览器窗口高度
       if (document.documentElement && document.documentElement.clientHeight)
         winHeight = document.documentElement.clientHeight;
-      document.getElementById("images").style.height = winHeight + "px";
+      document.getElementById("scorllwrapper").style.height = winHeight + "px";
     },
-    GetWenyanOto(){
-        var _that=this;
-        this.$http.get('/api/getwenyanoto').then(res => { // url即在mock.js中定义的
-            console.log(res.data) // 打印一下响应数据
-            _that.wenyanContent=res.data.wenyanobj;
-         
-        })
+    GetWenyanOto() {
+      var _that = this;
+      this.$http.get("/api/getwenyanoto").then(res => {
+        // url即在mock.js中定义的
+        console.log(res.data); // 打印一下响应数据
+        _that.wenyanContent = res.data.wenyanobj;
+      });
     }
   },
   components: {
@@ -156,8 +158,8 @@ export default {
   },
   mounted() {
     this.GetWenyanOto();
-     setInterval(this.GetWenyanOto,10000);
-    
+    setInterval(this.GetWenyanOto, 10000);
+
     this.autodivheight();
     let _this = this;
     window.onresize = () => {

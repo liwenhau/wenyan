@@ -140,12 +140,11 @@ body {
 }
 
 #images {
+    overflow: scroll;
     width: 50%;
     min-width: 490px;
     margin: 0;
-    overflow: hidden;
     height: auto;
-    position: fixed;
     top: 0;
     left: 50%;
     z-index: -1;
@@ -155,13 +154,8 @@ body {
     transition: left 0.75s cubic-bezier(0.8, 0.0, 0.2, 1.0);
 }
 
-#images ul {
-    position: relative;
-}
-
 #images #catch {
     display: block;
-    position: absolute;
     width: 100%;
     left: 0;
     text-align: center;
@@ -177,17 +171,14 @@ body {
 }
 
 #images ul img {
-    width: 100%;
+    width: 50%;
     height: auto;
     display: block;
-    opacity: 0.75;
-    -webkit-transition: opacity 0.5s ease;
-    -moz-transition: opacity 0.5s ease;
     transition: opacity 0.5s ease;
 }
 
 #wenyanoto {
-    position: fixed;
+    position: absolute;
     color: #fff;
     z-index: 10;
     top: 20%;
