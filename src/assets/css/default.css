@@ -159,7 +159,6 @@ body {
     width: 100%;
     left: 0;
     text-align: center;
-    z-index: 9000;
     opacity: 1;
     -webkit-transition: opacity 2s ease;
     -moz-transition: opacity 2s ease;
